@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.22",
+    "pg": "^8.10.0"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "name": "Alquiler",
+  "version": "1.0",
+  "description": "Backend de aplicacion alquiler de peliculas",
+  "main": "index.js",
+  "repository": "https://github.com/REJ20/backEnd-Alquiler.git",
+  "author": "Rafael Jurado",
+  "license": "no",
+  "private": false
+}
