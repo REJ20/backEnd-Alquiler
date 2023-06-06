@@ -5,14 +5,14 @@ const allUsers = ({  }) => {
 };
 
 
-const save = async ({user_name, pass, rol }) => {
+const save = async ({ user_name, pass, rol }) => {
     return db.query(
         "INSERT INTO users (user_name, pass, rol) VALUES ($1, $2, $3) RETURNING *",
         [user_name, pass, rol]
         );
 }
 
-const update = async ({user_name, pass, id}) => {
+const update = async ({ user_name, pass, id}) => {
     const result = await db.query(
         "UPDATE users SET user_name=$1, pass=$2 WHERE id=$3 RETURNING *", 
         [user_name, pass, id]);

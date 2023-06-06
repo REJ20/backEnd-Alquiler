@@ -5,10 +5,6 @@ const userController = require('../controllers/userController');
 
 const router = Router();
 
-router.get('/', (req, res) => {
-    res.send('Hola Trolito, este es un get Method');
-});
-
 router.get('/client', clientController.findAllClient);
 //router.get('/client', userController.getClient);
 router.post('/client', clientController.createClient);
