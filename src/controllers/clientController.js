@@ -11,6 +11,9 @@ const findAllClient = async(req, res) => {
         return error;
     }
 };
+
+//crear findOne
+
 const createClient = async (req, res) => {
     const {user_name, pass, first_name, last_name, email, birthdate, telephone } = req.body;
 
@@ -45,11 +48,15 @@ const createClient = async (req, res) => {
     const deleteClient = async ( req, res ) => {
         const { id } = req.params;
         try {
-            await clientService.deleteC({ id });
-            await userService.deleteU({ id });
-            const parseId = await clientService.findOne({ id });
-            console.log(parseId.rows[0]);
-            //return res.json(parseId.rows[0]);
+            const client = await clientService.findOne({id});
+            if(!client.rows[0]) return res.status(404).json({});
+
+            await Promise.all([
+                clientService.deleteC({ id }),
+                userService.deleteU({ id: client.rows[0].id_user })
+            ])
+
+            return res.status(200).json({});
         
         } catch (error) {
             console.log(error);

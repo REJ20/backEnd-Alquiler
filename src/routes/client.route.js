@@ -8,7 +8,7 @@ const router = Router();
 router.get('/client', clientController.findAllClient);
 //router.get('/client', userController.getClient);
 router.post('/client', clientController.createClient);
-router.put('/client/eliminate/:id', clientController.deleteClient);
-router.put('/client/:id', clientController.updateClient); 
+router.put('/client/:id', clientController.updateClient);
+router.delete('/client/:id', clientController.deleteClient); 
 
 module.exports = router;

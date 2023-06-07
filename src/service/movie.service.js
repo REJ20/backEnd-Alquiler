@@ -1,13 +1,12 @@
 const db = require ('../db');
 
 const allMovies = ({  }) => {
-    return db.query("SELECT * FROM movie");
+    return db.query("SELECT * FROM movie ");
 };
 
 const findOne = ({ id }) => {
     return db.query(
-        "SELECT title, synopsis, categorie, imagen, stock, n_like, sale_price, sale_rent, eliminate" +
-        "FROM movie WHERE eliminate = FALSE", [+id]);
+        "SELECT * FROM movie WHERE id=$1 AND eliminate = false ", [+id]);
 };
 
 const save = async ({ title, synopsis, categorie, image, stock, n_like, sale_price, sale_rent }) => {
@@ -25,14 +24,15 @@ const update = async ({ title, synopsis, categorie, imagen, stock, n_like, sale_
    
 };
 
-const deleteU = ({ id }) => {
+const delet = ({ id }) => {
     return db.query(
-        "UPDATE users SET eliminate=true WHERE id=$1 RETURNING *", [+id]);
+        "UPDATE movie SET eliminate=true WHERE id=$1 RETURNING *", [+id]);
 }
 
 module.exports = {
     allMovies,
     findOne,
     save,
-    update
+    update,
+    delet
 }
